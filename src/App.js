@@ -5,25 +5,12 @@ import throttle from 'lodash.throttle'
 // const Header = useMemo(() => , input)
 
 function App() {
-  const MAX_RANDOM = 150;
-  const DEFAULT_COLUMNS = 101;
-  const DEFAUTL_ROWS = 2;
+  const MAX_RANDOM = 20;
+  const DEFAULT_COLUMNS = 20;
+  const DEFAUTL_ROWS = 20;
 
   const [cols, setCols] = useState(DEFAULT_COLUMNS)
   const [rows, setRows] = useState(DEFAUTL_ROWS)
-
-  let MAX_COLS = DEFAULT_COLUMNS; 
-  let MAX_ROWS = DEFAUTL_ROWS;
-
-  const updateTable = ([cols, rows]) => {
-    if (cols > MAX_COLS) {
-      MAX_COLS = cols;
-    }
-  }
-  
-  useEffect(throttle(() => {
-    console.log(cols, rows);
-  }, 500), [cols, rows])
 
   return (
     <div className="app">
@@ -54,7 +41,7 @@ function App() {
                   <th>{col_index + 1}</th>
                   {
                     new Array(+cols).fill(0).map((el, row_index) => (
-                      <td key={`tr_th_${row_index}`}>{Math.floor(Math.random() * 150)}</td>
+                      <td key={`tr_th_${row_index}`}>{Math.floor(Math.random(MAX_RANDOM) * 150)}</td>
                     ))
                   }
                 </tr>)
